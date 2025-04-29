@@ -68,9 +68,11 @@ class Implicit_Heap{
 		elements = sorted;
 		heap_size = temp_size;
 		}
+		
 		vector<T> getElements(){
 			return elements;
 		}
+		
 		void ENQUEUE(T e){
     	    elements.push_back(e);  
     		heap_size++;

@@ -13,7 +13,7 @@ using namespace std;
 //Bubble Sort is efficient for small-size vector, instead Heap Sort is handy for large-size vector.
 
 /*
-The test was undertook for 2 types of vectors, one which elements are pseudo-random, the second one
+The test was undertook with 2 types of vectors, one which elements are pseudo-random, the second one
 is as the first half is made up by random elements which seeds is changing every cycle depending on index 
 of iteration, the second half is the same as the fist one.
 */
@@ -50,8 +50,8 @@ int main(void)
     {
     	vector<double>v2 = RanDouble(size);
         vector<double> v(v2);
-        std::chrono::steady_clock::time_point start_time = std::chrono::steady_clock::now();
         SortLibrary::Implicit_Heap<double> a(v);
+        std::chrono::steady_clock::time_point start_time = std::chrono::steady_clock::now();
         a.HeapSort();
         std::chrono::steady_clock::time_point end_time = std::chrono::steady_clock::now();
         time_elapsed_heap_v1 += std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time).count();
@@ -59,8 +59,6 @@ int main(void)
     time_elapsed_heap_v1 /= num_experiment;
 
     std::cout << "Heap Sort - v1: " << time_elapsed_heap_v1 << std::endl;
-
-
     double time_elapsed_heap_v2 = 0.0;
     for(unsigned int t = 0; t < num_experiment; t++)
     {
@@ -71,8 +69,8 @@ int main(void)
         	v3[i] = (rand() % (1000));
         copy(v2.begin(), v2.begin() + floor(size * 0.5) + 1, v3.begin());
         vector<int> v(v3);
-        std::chrono::steady_clock::time_point start_time = std::chrono::steady_clock::now();
         SortLibrary::Implicit_Heap<int> a(v);
+        std::chrono::steady_clock::time_point start_time = std::chrono::steady_clock::now();
         a.HeapSort();
         std::chrono::steady_clock::time_point end_time = std::chrono::steady_clock::now();
         time_elapsed_heap_v2 += std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time).count();
@@ -93,7 +91,6 @@ int main(void)
         time_elapsed_bubble_v1 += std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time).count();
     }
     time_elapsed_bubble_v1/= num_experiment;
-
     std::cout << "Bubble Sort - v1: " << time_elapsed_bubble_v1 << std::endl;
     
     double time_elapsed_bubble_v2 = 0.0;
