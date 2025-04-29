@@ -48,7 +48,7 @@ class Implicit_Heap{
 				ENQUEUE(c);
 			}
 		   
-		    cout << "ELEMENTS BEFORE SORTING:" << endl;
+		    cout << "ELEMENTS BEFORE HEAP SORT RSORTING:" << endl;
 			for(auto&c:elements){
 				cout << c << " ";
 			}
@@ -56,6 +56,7 @@ class Implicit_Heap{
 		
 		}
 		Implicit_Heap()=delete;
+		~Implicit_Heap()=default;
 		void HeapSort(){
 		std::vector<T> temp = elements; 
 		uint temp_size = heap_size;
@@ -63,7 +64,7 @@ class Implicit_Heap{
 		for (size_t i = 0; i < sorted.size(); i++) {
 			sorted[sorted.size() - 1 - i] = DEQUEUE();
 		}
-		string message = ">AFTER SORTING: ";
+		string message = ">ELEMENTS AFTER HEAP SORT  SORTING: ";
 		Print(sorted,message);
 		elements = sorted;
 		heap_size = temp_size;
