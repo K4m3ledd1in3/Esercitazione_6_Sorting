@@ -19,17 +19,7 @@ std::vector<double> RanDouble(size_t size){
     }
 	return v;
 }
-std::vector<int> RanInt(size_t size){
-	std::vector<int> v(size);
-    std::random_device rd;
-    std::mt19937 gen(rd());  
-    std::uniform_real_distribution<> dis(0.0, 100.0);
 
-    for (auto& x : v) {
-        x = dis(gen);
-    }
-	return v;
-}
 const size_t size = 10;
 TEST(TestSorting, TestBubbleSort)
 {
