@@ -4,25 +4,51 @@
 #include <vector>
 #include <cmath>
 #include <gtest/gtest.h>
+#include <random>
 #include "SortingAlgorithm.hpp"
 
 namespace SortLibrary {
+std::vector<double> RanDouble(size_t size){
+	std::vector<double> v(size);
+    std::random_device rd;
+    std::mt19937 gen(rd());     // Mersenne Twister RNG
+    std::uniform_real_distribution<> dis(0.0, 100.0);
 
+    for (auto& x : v) {
+        x = dis(gen);
+    }
+	return v;
+}
+std::vector<int> RanInt(size_t size){
+	std::vector<int> v(size);
+    std::random_device rd;
+    std::mt19937 gen(rd());  
+    std::uniform_real_distribution<> dis(0.0, 100.0);
+
+    for (auto& x : v) {
+        x = dis(gen);
+    }
+	return v;
+}
+const size_t size = 10;
 TEST(TestSorting, TestBubbleSort)
 {
-    std::vector<int> v = {9, 13, 5, 10, 2, 7, 9, 4, 6, 12};
-    BubbleSort<int>(v);
-    std::vector<int> sortedV = {2, 4, 5, 6, 7, 9, 9, 10, 12 ,13};
-    EXPECT_EQ(v, sortedV);
+	
+    std::vector<double> v = RanDouble(size);
+    std::vector<double> z(v);
+    std::sort(z.begin(),z.end());
+    BubbleSort<double>(v);
+    EXPECT_EQ(z, v);
 }
 
 TEST(TestSorting, TestHeapSort)
 {
-    std::vector<int> v = {9, 13, 5, 10, 2, 7, 9, 4, 6, 12};
-    SortLibrary::Implicit_Heap<int> a(v);    
-	a.HeapSort();
-	std::vector<int> sortedV = {2, 4, 5, 6, 7, 9, 9, 10, 12 ,13};
-    EXPECT_EQ(a.getElements(), sortedV);
+    std::vector<double> v = RanDouble(size);
+    std::vector<double> z(v);
+    SortLibrary::Implicit_Heap<double> a(v); 
+	a.HeapSort();   
+    std::sort(z.begin(),z.end());
+    EXPECT_EQ(a.getElements(), z);
 }
 
 }

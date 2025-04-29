@@ -25,7 +25,7 @@ size_t n = v.size();
 while(swap)
 {
 	swap = false;
-	for(size_t i=0; i<n; i++)
+	for(size_t i=0; i<n-1; i++)
 	{
 		if(v[i]>v[i+1]){
 			T tmp = v[i+1];
@@ -47,13 +47,13 @@ class Implicit_Heap{
 			for(auto& c: v){
 				ENQUEUE(c);
 			}
-		   /*
+		   
 		    cout << "ELEMENTS BEFORE SORTING:" << endl;
 			for(auto&c:elements){
 				cout << c << " ";
 			}
 			cout << endl;
-			*/
+		
 		}
 		Implicit_Heap()=delete;
 		void HeapSort(){
@@ -64,7 +64,7 @@ class Implicit_Heap{
 			sorted[sorted.size() - 1 - i] = DEQUEUE();
 		}
 		string message = ">AFTER SORTING: ";
-		//Print(sorted,message);
+		Print(sorted,message);
 		elements = sorted;
 		heap_size = temp_size;
 		}
@@ -74,8 +74,8 @@ class Implicit_Heap{
 		}
 		
 		void ENQUEUE(T e){
+			heap_size++;
     	    elements.push_back(e);  
-    		heap_size++;
     		Heap_Up(heap_size - 1);
 		}
 		T DEQUEUE(){

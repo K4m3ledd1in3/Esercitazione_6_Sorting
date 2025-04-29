@@ -58,7 +58,7 @@ int main(void)
     }
     time_elapsed_heap_v1 /= num_experiment;
 
-    std::cout << "Heap Sort - v1: " << time_elapsed_heap_v1 << std::endl;
+    
     double time_elapsed_heap_v2 = 0.0;
     for(unsigned int t = 0; t < num_experiment; t++)
     {
@@ -77,7 +77,7 @@ int main(void)
     }
     time_elapsed_heap_v2 /= num_experiment;
 
-    std::cout << "Heap Sort - v2: " << time_elapsed_heap_v2 << std::endl;
+    
     num_experiment=1000;
 
     double time_elapsed_bubble_v1 = 0.0;
@@ -91,7 +91,7 @@ int main(void)
         time_elapsed_bubble_v1 += std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time).count();
     }
     time_elapsed_bubble_v1/= num_experiment;
-    std::cout << "Bubble Sort - v1: " << time_elapsed_bubble_v1 << std::endl;
+    
     
     double time_elapsed_bubble_v2 = 0.0;
     for(unsigned int t = 0; t < num_experiment; t++)
@@ -109,7 +109,11 @@ int main(void)
         time_elapsed_bubble_v2 += std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time).count();
     }
     time_elapsed_bubble_v2 /= num_experiment;
-    std::cout << "Bubble Sort - v2: " << time_elapsed_bubble_v2 << std::endl;
+    std::cout <<"Runtime sorting algorithms:"<< std::endl;
+    std::cout << "Heap Sort - v1: " << time_elapsed_heap_v1 << std::endl;
+    std::cout << "Heap Sort - v2: " << time_elapsed_heap_v2 << std::endl;
+	std::cout << "Bubble Sort - v1: " << time_elapsed_bubble_v1 << std::endl;
+	std::cout << "Bubble Sort - v2: " << time_elapsed_bubble_v2 << std::endl;
     return 0;
 }
 
